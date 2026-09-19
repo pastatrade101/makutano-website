@@ -34,11 +34,11 @@ const unsplash = (photoId: string) => ({
 export const media = {
 	/** Home hero. */
 	heroPortrait: {
-		src: '/images/photos/hero-a.jpg',
-		alt: 'A Tanzanian professional at work',
+		src: '/images/photos/hero-circuit.jpg',
+		alt: 'A printed circuit board in close focus',
 		width: 760,
 		height: 950,
-		placeholder: unsplash('1573497491765-dccce02b29df')
+		placeholder: unsplash('1631377153566-b294bfd5f9f4')
 	},
 
 	/** Home and About — "who we are". */
