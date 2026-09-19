@@ -8,6 +8,9 @@ function optional(key: string): string | undefined {
 const supabaseUrl = optional('SUPABASE_URL');
 const supabaseServiceKey = optional('SUPABASE_SERVICE_ROLE_KEY');
 
+const resendApiKey = optional('RESEND_API_KEY');
+const notifyEmail = optional('NOTIFY_EMAIL');
+
 export const env = {
 	port: Number(process.env.PORT ?? 5174),
 	host: process.env.HOST ?? '0.0.0.0',
@@ -19,9 +22,21 @@ export const env = {
 		.filter(Boolean),
 	supabaseUrl,
 	supabaseServiceKey,
-	notifyEmail: optional('NOTIFY_EMAIL'),
+	notifyEmail,
+	resendApiKey,
+	/**
+	 * Sender for enquiry notifications. Must be an address on a domain verified
+	 * in Resend. The default is Resend's shared test sender, which only ever
+	 * delivers to the Resend account owner's own address — fine for checking
+	 * the wiring, not for production.
+	 */
+	resendFrom: optional('RESEND_FROM') ?? 'Makutano Digital <onboarding@resend.dev>',
 	/** True once both Supabase credentials are present. */
 	get supabaseEnabled() {
 		return Boolean(supabaseUrl && supabaseServiceKey);
+	},
+	/** True once enquiries can actually be emailed somewhere. */
+	get emailEnabled() {
+		return Boolean(resendApiKey && notifyEmail);
 	}
 } as const;

@@ -35,6 +35,7 @@ export function buildServer() {
 			status: 'up',
 			env: env.nodeEnv,
 			storage: repository.usingSupabase ? 'supabase' : 'fallback-seed',
+			email: env.emailEnabled ? 'resend' : 'disabled',
 			time: new Date().toISOString()
 		}
 	}));
@@ -82,6 +83,18 @@ app
 		if (!repository.usingSupabase) {
 			app.log.warn(
 				'SUPABASE_URL / SUPABASE_SERVICE_ROLE_KEY are not set. Serving seed content; form submissions are kept in memory only.'
+			);
+		}
+		if (env.emailEnabled) {
+			app.log.info(`Enquiry notifications via Resend -> ${env.notifyEmail}`);
+		} else {
+			app.log.warn(
+				'RESEND_API_KEY / NOTIFY_EMAIL are not both set. Enquiries will not be emailed.'
+			);
+		}
+		if (!repository.usingSupabase && !env.emailEnabled) {
+			app.log.error(
+				'No storage and no email: enquiries submitted now are LOST. Set Supabase or Resend credentials.'
 			);
 		}
 	})

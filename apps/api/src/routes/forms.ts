@@ -1,6 +1,7 @@
 import { contactSchema, fieldErrors, formCopy } from '@makutano/shared';
 import type { FastifyInstance } from 'fastify';
 import { env } from '../lib/env.js';
+import { notifyEnquiry } from '../lib/mailer.js';
 import { repository } from '../lib/repository.js';
 
 /** Enquiry form endpoint. */
@@ -38,15 +39,34 @@ export async function formRoutes(app: FastifyInstance) {
 				);
 			}
 
-			// Subject line the office inbox receives.
-			req.log.info(
-				{ id: submission.id, subject: `New website enquiry from ${submission.name}`, notify: env.notifyEmail },
-				'website enquiry received'
-			);
+			// Emailed after storing, and deliberately awaited: the process may be
+			// replaced at any time, and a detached promise would take the enquiry
+			// with it. A failure here never fails the request — the visitor has
+			// done nothing wrong and the submission is already recorded.
+			const notification = await notifyEnquiry(submission);
+
+			if (notification.sent) {
+				req.log.info(
+					{ id: submission.id, messageId: notification.id, notify: env.notifyEmail },
+					'enquiry emailed'
+				);
+			} else {
+				req.log.error(
+					{ id: submission.id, reason: notification.reason, persisted },
+					persisted
+						? 'enquiry stored but not emailed'
+						: 'ENQUIRY LOST — neither stored nor emailed'
+				);
+			}
 
 			return reply.code(201).send({
 				ok: true,
-				data: { id: submission.id, persisted, receivedAt: submission.createdAt }
+				data: {
+					id: submission.id,
+					persisted,
+					notified: notification.sent,
+					receivedAt: submission.createdAt
+				}
 			});
 		}
 	});

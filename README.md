@@ -131,7 +131,24 @@ CORS. Server-side rendering calls the API container directly on
 
 `ORIGIN` must match the public URL or adapter-node rejects form POSTs.
 
-> **Enquiries are lost without Supabase.** With `SUPABASE_URL` and
-> `SUPABASE_SERVICE_ROLE_KEY` unset the API keeps submissions in an in-memory
-> array, while the visitor still sees a success message. Set both before taking
-> the contact form live.
+### Enquiry delivery
+
+An enquiry is handled twice over, and the two paths are independent:
+
+| Path | Enabled by | Effect |
+| --- | --- | --- |
+| Stored | `SUPABASE_URL` + `SUPABASE_SERVICE_ROLE_KEY` | Row in `contact_submissions` |
+| Emailed | `RESEND_API_KEY` + `NOTIFY_EMAIL` | Mail to the office, reply-to the enquirer |
+
+Either one alone is enough not to lose the enquiry. `GET /health` reports both
+(`storage`, `email`), and the response to a submission carries `persisted` and
+`notified` so a failure is visible rather than silent.
+
+`RESEND_FROM` must be an address on a domain verified at
+[resend.com/domains](https://resend.com/domains). The default test sender only
+delivers to the Resend account owner's own address — enough to prove the wiring,
+not enough for production.
+
+> **With neither configured the enquiry is lost.** The visitor still sees a
+> success message, and the API logs `ENQUIRY LOST — neither stored nor emailed`.
+> Set at least one before taking the contact form live.
