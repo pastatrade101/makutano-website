@@ -1,6 +1,5 @@
 <script lang="ts">
 	import '$styles/app.css';
-	import { page } from '$app/state';
 	import { onMount } from 'svelte';
 	import { lang, t } from '$lib/i18n.svelte';
 	import { theme } from '$lib/theme.svelte';
@@ -13,10 +12,8 @@
 	let { data, children } = $props();
 	onMount(() => lang.init());
 	onMount(() => theme.init());
-	const canonical = $derived(`${page.url.origin}${page.url.pathname}`);
 </script>
 
-<svelte:head><link rel="canonical" href={canonical} /></svelte:head>
 <a class="skip-link" href="#main">{t({en:'Skip to content',sw:'Ruka hadi maudhui'})}</a>
 <PageProgress />
 <SiteMotion />
