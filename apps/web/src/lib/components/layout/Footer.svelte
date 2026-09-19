@@ -43,7 +43,7 @@
 		<div class="top">
 			<div class="about">
 				<a href="/" class="brand" aria-label="{site.name} — home">
-					<span class="mark" aria-hidden="true">M</span>
+					<img class="mark" src="/images/brand/makutano-mark.png" alt="" width="38" height="38" aria-hidden="true" />
 					<span class="word"><strong>Makutano</strong><em>Digital</em></span>
 				</a>
 				<p>{t(site.description)}</p>
@@ -190,16 +190,11 @@
 	}
 
 	.mark {
-		display: grid;
-		place-items: center;
+		display: block;
 		width: 38px;
 		height: 38px;
-		border-radius: 11px;
-		background: var(--brand);
-		color: var(--on-brand);
-		font-family: var(--font-display);
-		font-weight: 700;
-		font-size: 1.25rem;
+		object-fit: contain;
+		filter: drop-shadow(0 7px 14px rgba(5, 13, 24, .16));
 	}
 
 	.word {

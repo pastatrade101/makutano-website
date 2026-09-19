@@ -46,7 +46,7 @@
 <header class="header" class:scrolled>
 	<div class="container bar">
 		<a href="/" class="brand" aria-label={t({ en: `${site.name} — home`, sw: `${site.name} — nyumbani` })}>
-			<span class="mark" aria-hidden="true">M</span>
+			<img class="mark" src="/images/brand/makutano-mark.png" alt="" width="40" height="40" aria-hidden="true" />
 			<span class="word"><strong>Makutano</strong><em>Digital</em></span>
 		</a>
 		<nav class="desktop-nav" aria-label={t({ en: 'Primary navigation', sw: 'Urambazaji mkuu' })}>
@@ -83,8 +83,8 @@
 	.header.scrolled { border-color: var(--line); background: rgba(var(--bg-rgb), .94); box-shadow: 0 12px 38px rgba(4, 10, 18, .08); }
 	.bar { height: var(--header-h); display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; }
 	.brand { display: inline-flex; align-items: center; gap: .7rem; flex: none; }
-	.mark { display: grid; place-items: center; width: 40px; height: 40px; border-radius: 12px; background: var(--brand); color: var(--on-brand); font: 700 1.4rem var(--font-display); transition: transform 320ms var(--ease-emphasized), border-radius 320ms var(--ease-out); }
-	.brand:hover .mark { transform: rotate(-7deg) scale(1.06); border-radius: 16px 10px 16px 10px; }
+	.mark { display: block; width: 40px; height: 40px; object-fit: contain; filter: drop-shadow(0 7px 14px rgba(5, 13, 24, .18)); transition: transform 320ms var(--ease-emphasized), filter 320ms var(--ease-out); }
+	.brand:hover .mark { transform: rotate(-5deg) scale(1.07); filter: drop-shadow(0 10px 20px rgba(5, 13, 24, .26)); }
 	.word { display: flex; flex-direction: column; font-family: var(--font-display); line-height: 1.1; }
 	.word strong { font-size: 1.1rem; }
 	.word em { font-style: normal; font-size: .65rem; letter-spacing: .3em; text-transform: uppercase; color: var(--brand-ink); margin-top: .2rem; }
@@ -110,5 +110,5 @@
 	@keyframes drawer-in { from { opacity: 0; transform: translateX(24px); } }
 	@media (max-width: 1100px) { .desktop-nav { display: none; } .burger { display: grid; } }
 	@media (max-width: 560px) { .cta { display: none; } .bar { gap: .5rem; } .actions { gap: .5rem; } }
-	@media (max-width: 360px) { .word { display: none; } .brand { gap: .45rem; } .mark { width: 34px; height: 36px; } }
+	@media (max-width: 360px) { .word { display: none; } .brand { gap: .45rem; } .mark { width: 36px; height: 36px; } }
 </style>
