@@ -21,7 +21,6 @@
 			'main .process-grid > li',
 			'main .feature-grid > .feature',
 			'main .proof-cards > a',
-			'main .items > li',
 			'main .closing-panel'
 		];
 
@@ -45,7 +44,15 @@
 		);
 
 		elements.forEach((element) => observer.observe(element));
-		cleanupPage = () => observer.disconnect();
+		// Content visibility should never depend indefinitely on observer delivery.
+		const visibilityFallback = window.setTimeout(() => {
+			elements.forEach((element) => element.classList.add('motion-in'));
+			observer.disconnect();
+		}, 1100);
+		cleanupPage = () => {
+			window.clearTimeout(visibilityFallback);
+			observer.disconnect();
+		};
 	}
 
 	onMount(() => {

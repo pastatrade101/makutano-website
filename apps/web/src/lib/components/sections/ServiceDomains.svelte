@@ -90,34 +90,65 @@
 		align-items: flex-start;
 		gap: 0.75rem;
 		padding: clamp(1.5rem, 2.6vw, 2rem);
-		background: var(--bg-raised);
+		background:
+			radial-gradient(circle at 100% 0%, rgba(var(--brand-rgb), .07), transparent 30%),
+			var(--bg-raised);
 		border: 1px solid var(--line);
 		border-radius: var(--radius-lg);
 		overflow: hidden;
 		transition:
 			border-color var(--dur) var(--ease-out),
-			transform var(--dur) var(--ease-out),
 			background var(--dur) var(--ease-out);
 	}
 
-	article::before {
+	.items:not(.list) article::before {
 		content: '';
 		position: absolute;
-		inset: auto 0 0 0;
-		height: 2px;
+		top: 18px;
+		right: 18px;
+		width: 46px;
+		height: 46px;
+		border-top: 1px solid rgba(var(--brand-rgb), .72);
+		border-right: 1px solid rgba(var(--brand-rgb), .72);
+		border-radius: 0 14px 0 0;
+		opacity: .38;
+		transform: scale(.72);
+		transform-origin: top right;
+		transition: transform 360ms var(--ease-emphasized), opacity 240ms var(--ease-out);
+	}
+
+	.items:not(.list) article::after {
+		content: '';
+		position: absolute;
+		top: 27px;
+		right: 27px;
+		width: 5px;
+		height: 5px;
+		border-radius: 50%;
 		background: var(--brand);
-		transform: scaleX(0);
-		transform-origin: 0 50%;
-		transition: transform var(--dur-slow) var(--ease-out);
+		box-shadow: -11px 11px 0 rgba(var(--brand-rgb), .34);
+		opacity: .58;
+		transition: transform 360ms var(--ease-emphasized), opacity 240ms var(--ease-out);
 	}
 
-	li:hover article {
-		border-color: var(--line-strong);
-		transform: translateY(-4px);
+	li:hover article,
+	li:focus-within article {
+		border-color: rgba(var(--brand-rgb), .46);
+		background:
+			radial-gradient(circle at 100% 0%, rgba(var(--brand-rgb), .13), transparent 34%),
+			var(--bg-raised);
 	}
 
-	li:hover article::before {
-		transform: scaleX(1);
+	.items:not(.list) li:hover article::before,
+	.items:not(.list) li:focus-within article::before {
+		transform: scale(1);
+		opacity: .9;
+	}
+
+	.items:not(.list) li:hover article::after,
+	.items:not(.list) li:focus-within article::after {
+		transform: translate(-3px, 3px);
+		opacity: 1;
 	}
 
 	.primary article {
@@ -126,8 +157,15 @@
 	}
 
 	.num {
+		display: inline-flex;
+		align-items: center;
+		min-height: 28px;
+		padding: .3rem .58rem;
+		border: 1px solid rgba(var(--brand-rgb), .26);
+		border-radius: var(--radius-pill);
+		background: rgba(var(--brand-rgb), .07);
 		font-family: var(--font-display);
-		font-size: 0.8125rem;
+		font-size: 0.72rem;
 		font-weight: 600;
 		letter-spacing: 0.14em;
 		color: var(--brand-ink);
@@ -150,7 +188,7 @@
 	li:hover .ico {
 		background: var(--brand);
 		color: var(--on-brand);
-		transform: rotate(-6deg);
+		transform: rotate(-5deg) translateY(-2px);
 	}
 
 	.body {
@@ -237,6 +275,11 @@
 	}
 
 	.items.list .num {
+		min-height: 0;
+		padding: 0;
+		border: 0;
+		border-radius: 0;
+		background: transparent;
 		font-size: clamp(1.75rem, 3.4vw, 2.75rem);
 		font-weight: 300;
 		letter-spacing: -0.02em;

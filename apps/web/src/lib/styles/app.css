@@ -390,18 +390,15 @@ strong {
 .motion-enabled [data-motion-reveal] {
 	opacity: 0;
 	transform: translate3d(0, 24px, 0) scale(.985);
-	filter: blur(3px);
 	transition:
 		opacity 620ms var(--ease-emphasized) var(--motion-delay, 0ms),
-		transform 620ms var(--ease-emphasized) var(--motion-delay, 0ms),
-		filter 500ms var(--ease-out) var(--motion-delay, 0ms);
-	will-change: opacity, transform, filter;
+		transform 620ms var(--ease-emphasized) var(--motion-delay, 0ms);
+	will-change: opacity, transform;
 }
 
 .motion-enabled [data-motion-reveal].motion-in {
 	opacity: 1;
 	transform: none;
-	filter: none;
 }
 
 .motion-enabled header .brand,

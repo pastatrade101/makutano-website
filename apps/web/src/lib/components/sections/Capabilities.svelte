@@ -44,7 +44,6 @@
 							{t(ui.readMore)}
 							<Icon name="arrow-up-right" size={15} />
 						</a>
-						<span class="glow" aria-hidden="true"></span>
 					</article>
 				</li>
 			{/each}
@@ -63,7 +62,13 @@
 		display: grid;
 		grid-template-columns: repeat(3, 1fr);
 		gap: clamp(1.25rem, 2.5vw, 1.75rem);
+		align-items: stretch;
+		padding: 14px 10px 26px;
+		margin: -14px -10px -26px;
+		overflow: visible;
 	}
+
+	.grid-cards > li { min-width: 0; }
 
 	.card {
 		position: relative;
@@ -71,17 +76,54 @@
 		display: flex;
 		flex-direction: column;
 		align-items: flex-start;
-		gap: 0.875rem;
+		gap: 0.95rem;
 		padding: 0 clamp(1.75rem, 3vw, 2.25rem) clamp(1.75rem, 3vw, 2.25rem);
 		overflow: hidden;
 		isolation: isolate;
+		background:
+			radial-gradient(circle at 92% 94%, rgba(var(--brand-rgb), .1), transparent 32%),
+			linear-gradient(145deg, rgba(255, 255, 255, .035), transparent 42%),
+			var(--bg-raised);
+		box-shadow: inset 0 1px 0 rgba(255, 255, 255, .055);
+		transform: translateZ(0);
 	}
 
+	.card::after {
+		content: '';
+		position: absolute;
+		inset: 0 auto auto 9%;
+		width: 32%;
+		height: 2px;
+		border-radius: 0 0 999px 999px;
+		background: linear-gradient(90deg, var(--brand), rgba(var(--brand-rgb), 0));
+		opacity: .68;
+		transition: width 360ms var(--ease-emphasized), opacity 260ms var(--ease-out);
+	}
+
+	.grid-cards .card:hover,
+	.grid-cards .card:focus-within {
+		border-color: rgba(var(--brand-rgb), .42);
+		transform: translateY(-3px);
+		box-shadow: inset 0 1px 0 rgba(255, 255, 255, .075);
+	}
+
+	.card:hover::after,
+	.card:focus-within::after { width: 58%; opacity: 1; }
+
 	.shot {
+		position: relative;
 		width: calc(100% + clamp(3.5rem, 6vw, 4.5rem));
 		margin: 0 clamp(-2.25rem, -3vw, -1.75rem) clamp(0.75rem, 1.5vw, 1.25rem);
 		overflow: hidden;
 		border-bottom: 1px solid var(--line);
+	}
+
+	.shot::after {
+		content: '';
+		position: absolute;
+		inset: 0;
+		pointer-events: none;
+		background: linear-gradient(180deg, transparent 62%, rgba(var(--bg-rgb), .2));
 	}
 
 	.shot img {
@@ -102,23 +144,27 @@
 
 	.ico {
 		display: grid;
-		margin-top: 0.25rem;
+		margin-top: -2.7rem;
 		place-items: center;
-		width: 52px;
-		height: 52px;
-		border-radius: 15px;
-		background: var(--brand-soft);
-		color: var(--brand-ink);
+		width: 56px;
+		height: 56px;
+		z-index: 1;
+		border: 6px solid var(--bg-raised);
+		border-radius: 18px;
+		background: var(--brand);
+		color: var(--on-brand);
+		box-shadow: 0 8px 22px rgba(4, 10, 18, .14);
 		transition:
 			background var(--dur) var(--ease-out),
 			color var(--dur) var(--ease-out),
-			transform var(--dur) var(--ease-out);
+			transform var(--dur) var(--ease-out),
+			box-shadow var(--dur) var(--ease-out);
 	}
 
 	.card:hover .ico {
-		background: var(--brand);
 		color: var(--on-brand);
-		transform: rotate(-6deg);
+		transform: rotate(-5deg) translateY(-2px);
+		box-shadow: 0 11px 24px rgba(4, 10, 18, .18);
 	}
 
 	h3 {
@@ -135,9 +181,13 @@
 		display: inline-flex;
 		align-items: center;
 		gap: 0.45rem;
-		margin-top: 0.5rem;
+		margin-top: 0.65rem;
+		padding-top: 1rem;
+		width: 100%;
+		border-top: 1px solid var(--line);
 		font-family: var(--font-display);
 		font-size: 0.875rem;
+		font-weight: 600;
 		color: var(--brand-ink);
 	}
 
@@ -147,25 +197,6 @@
 
 	.more:hover :global(svg) {
 		transform: translate(3px, -3px);
-	}
-
-	/* Soft brand glow that fades in behind the card on hover. */
-	.glow {
-		position: absolute;
-		top: -40%;
-		right: -30%;
-		width: 70%;
-		aspect-ratio: 1;
-		z-index: -1;
-		border-radius: 50%;
-		background: rgba(var(--brand-rgb), 0.28);
-		filter: blur(60px);
-		opacity: 0;
-		transition: opacity var(--dur-slow) var(--ease-out);
-	}
-
-	.card:hover .glow {
-		opacity: 1;
 	}
 
 	@media (max-width: 700px) {
