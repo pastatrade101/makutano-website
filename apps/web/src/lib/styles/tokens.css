@@ -1,0 +1,102 @@
+/**
+ * Makutano Digital design tokens.
+ *
+ * Identity: deep navy as the primary/structural colour, warm gold as the
+ * accent. Navy carries the canvas, surfaces and gradients; gold carries
+ * calls to action, eyebrows, icons and emphasis.
+ *
+ * Gold is a light colour, so anything sitting ON gold uses `--on-brand`
+ * (deep navy), never white — white on gold fails contrast badly.
+ */
+
+:root {
+	/* Primary — navy */
+	--primary: #1e3b5f;
+	--primary-rgb: 30, 59, 95;
+	--primary-light: #2d557f;
+	--primary-dark: #14293f;
+	--primary-soft: rgba(30, 59, 95, 0.4);
+
+	/* Accent — gold. `--brand` is the alias components use. */
+	--accent: #ffbd58;
+	--accent-rgb: 255, 189, 88;
+	--accent-strong: #ffa92b;
+	--brand: var(--accent);
+	--brand-rgb: var(--accent-rgb);
+	--brand-deep: var(--accent-strong);
+	--brand-soft: rgba(255, 189, 88, 0.13);
+	/* Ink for text/icons placed on a gold fill. */
+	--on-brand: #12263d;
+
+	/* Surfaces — navy-tinted darks, not neutral black */
+	--bg: #0b1522;
+	--bg-rgb: 11, 21, 34;
+	--bg-raised: #102032;
+	--bg-raised-2: #16293e;
+	--bg-invert: #ffffff;
+
+	/* Ink */
+	--ink: #ffffff;
+	--ink-muted: #9aa8b8;
+	--ink-subtle: #93a3b7;
+	--ink-invert: #12263d;
+
+	/* Lines */
+	--line: rgba(255, 255, 255, 0.11);
+	--line-strong: rgba(255, 255, 255, 0.2);
+
+	/* Type */
+	--font-display: 'Outfit', 'Helvetica Neue', Arial, sans-serif;
+	--font-body: 'DM Sans', 'Helvetica Neue', Arial, sans-serif;
+	--fs-hero: clamp(2.75rem, 8.5vw, 7rem);
+	--fs-display: clamp(2.25rem, 5.5vw, 4.25rem);
+	--fs-h2: clamp(1.9rem, 3.8vw, 3.125rem);
+	--fs-h3: clamp(1.35rem, 2.2vw, 1.875rem);
+	--fs-h4: clamp(1.15rem, 1.6vw, 1.5rem);
+	--fs-body: 1rem;
+	--fs-small: 0.875rem;
+	--fs-eyebrow: 0.8125rem;
+	--lh-tight: 1.02;
+	--lh-heading: 1.15;
+	--lh-body: 1.75;
+
+	/* Space */
+	--container: 1240px;
+	--container-wide: 1560px;
+	--container-narrow: 860px;
+	--gutter: clamp(1.25rem, 4vw, 2.5rem);
+	--section-y: clamp(3.5rem, 7vw, 6rem);
+
+	/* Shape */
+	--radius-sm: 10px;
+	--radius: 18px;
+	--radius-lg: 28px;
+	--radius-pill: 999px;
+
+	/* Motion */
+	--ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+	--ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+	--dur-fast: 160ms;
+	--dur: 280ms;
+	--dur-slow: 750ms;
+
+	/* Elevation */
+	--shadow: 0 24px 60px rgba(4, 10, 18, 0.55);
+	--shadow-brand: 0 18px 44px rgba(var(--accent-rgb), 0.24);
+
+	--header-h: 84px;
+}
+
+/* Light sections invert the palette without touching component code. */
+.theme-light {
+	--bg: #ffffff;
+	--bg-rgb: 255, 255, 255;
+	--bg-raised: #f4f6f9;
+	--bg-raised-2: #e8edf3;
+	--ink: #12263d;
+	--ink-muted: #4a5c70;
+	--ink-subtle: #6f8095;
+	--line: rgba(18, 38, 61, 0.12);
+	--line-strong: rgba(18, 38, 61, 0.24);
+	--shadow: 0 24px 60px rgba(18, 38, 61, 0.1);
+}
