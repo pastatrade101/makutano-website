@@ -109,7 +109,6 @@
 
 		<div class="bottom">
 			<p>© {year} {site.legalName}</p>
-			<p>{t(site.developedBy)}</p>
 		</div>
 	</div>
 </footer>

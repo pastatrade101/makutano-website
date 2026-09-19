@@ -44,7 +44,6 @@ export const site: SiteSettings = {
 		en: 'Makutano Digital Company Limited — a duly licensed ICT services provider operating under the laws of the United Republic of Tanzania.',
 		sw: 'Makutano Digital Company Limited — mtoa huduma za TEHAMA aliyesajiliwa kwa mujibu wa sheria za Jamhuri ya Muungano wa Tanzania.'
 	},
-	developedBy: { en: 'Developed by Moinfotech', sw: 'Imetengenezwa na Moinfotech' },
 	registration: [
 		{
 			label: { en: 'Business License No.', sw: 'Namba ya Leseni' },

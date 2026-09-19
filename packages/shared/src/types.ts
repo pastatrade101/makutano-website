@@ -96,7 +96,6 @@ export interface SiteSettings {
 	mission: Localized;
 	vision: Localized;
 	statement: Localized;
-	developedBy: Localized;
 	registration: RegistrationRow[];
 	socials: { label: string; icon: string; url: string }[];
 }
