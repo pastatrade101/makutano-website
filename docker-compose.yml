@@ -1,0 +1,84 @@
+# Makutano Digital website — production stack.
+#
+# Two containers from one image: the Fastify API and the SvelteKit server.
+# Neither publishes a host port. Caddy fronts both over the shared
+# `makutano-net` network and terminates TLS:
+#
+#   makutano.co.tz  /api/v1*  ->  makutano-site-api:5174
+#   makutano.co.tz  everything else -> makutano-site-web:3000
+#
+# The server has no host firewall, so a published port would be world-reachable
+# the moment it opened. Keep it that way.
+#
+#   docker compose up -d --build
+#
+# Outside that server, create the network once first:
+#   docker network create makutano-net
+# For day-to-day local work use `pnpm dev` instead — it is far faster.
+
+services:
+  api:
+    build: .
+    image: makutano-website:latest
+    container_name: makutano-site-api
+    command: node apps/api/dist/server.js
+    # Supabase credentials live here and never in this file. Copy
+    # apps/api/.env.example to apps/api/.env and fill it in.
+    env_file:
+      - ./apps/api/.env
+    environment:
+      NODE_ENV: production
+      HOST: 0.0.0.0
+      PORT: "5174"
+    networks:
+      - makutano-net
+    restart: unless-stopped
+    healthcheck:
+      test:
+        - CMD
+        - node
+        - -e
+        - "fetch('http://127.0.0.1:5174/health').then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))"
+      interval: 30s
+      timeout: 5s
+      start_period: 15s
+      retries: 3
+
+  web:
+    build: .
+    image: makutano-website:latest
+    container_name: makutano-site-web
+    command: node apps/web/build/index.js
+    environment:
+      NODE_ENV: production
+      PORT: "3000"
+      # Server-side rendering calls the API container directly. The browser
+      # never uses this — it goes to the same-origin /api/v1 path that Caddy
+      # routes, so no API host is baked into the bundle and there is no CORS.
+      PUBLIC_API_URL: http://makutano-site-api:5174
+      PUBLIC_SITE_URL: https://makutano.co.tz
+      # adapter-node rejects form POSTs whose Origin does not match, and needs
+      # the forwarded header to see the real client IP from behind Caddy.
+      ORIGIN: https://makutano.co.tz
+      ADDRESS_HEADER: X-Forwarded-For
+      XFF_DEPTH: "1"
+    depends_on:
+      - api
+    networks:
+      - makutano-net
+    restart: unless-stopped
+    healthcheck:
+      test:
+        - CMD
+        - node
+        - -e
+        - "fetch('http://127.0.0.1:3000/').then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))"
+      interval: 30s
+      timeout: 5s
+      start_period: 20s
+      retries: 3
+
+networks:
+  makutano-net:
+    external: true
+    name: makutano-net

@@ -105,5 +105,33 @@ supplied. Social buttons appear only for configured HTTP(S) links. These are
 optional content additions rather than visible placeholders.
 
 The development API still stores enquiries in memory without Supabase. Persistent
-storage, actual notification delivery, and the production `/api/v1` reverse proxy
-remain deployment/backend work.
+storage and actual notification delivery remain backend work — see the warning
+under Deploying.
+
+## Deploying
+
+Two containers from one image, fronted by Caddy, on the shared `makutano-net`
+network. Neither publishes a host port.
+
+```bash
+cp apps/api/.env.example apps/api/.env   # fill in the Supabase credentials
+docker compose up -d --build
+```
+
+| Service | Container | Port | Command |
+| --- | --- | --- | --- |
+| API | `makutano-site-api` | 5174 | `node apps/api/dist/server.js` |
+| Web | `makutano-site-web` | 3000 | `node apps/web/build/index.js` |
+
+Caddy routes `makutano.co.tz/api/v1*` to the API and everything else to the web
+server, which keeps browser requests same-origin — the same arrangement the Vite
+proxy provides in dev, so no API host is baked into the bundle and there is no
+CORS. Server-side rendering calls the API container directly on
+`PUBLIC_API_URL`.
+
+`ORIGIN` must match the public URL or adapter-node rejects form POSTs.
+
+> **Enquiries are lost without Supabase.** With `SUPABASE_URL` and
+> `SUPABASE_SERVICE_ROLE_KEY` unset the API keeps submissions in an in-memory
+> array, while the visitor still sees a success message. Set both before taking
+> the contact form live.
