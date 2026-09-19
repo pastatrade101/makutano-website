@@ -31,6 +31,8 @@ export const env = {
 	 * the wiring, not for production.
 	 */
 	resendFrom: optional('RESEND_FROM') ?? 'Makutano Digital <onboarding@resend.dev>',
+	/** Public origin, used to build absolute asset URLs for branded email. */
+	siteUrl: (optional('SITE_URL') ?? 'https://makutano.co.tz').replace(/\/$/, ''),
 	/** True once both Supabase credentials are present. */
 	get supabaseEnabled() {
 		return Boolean(supabaseUrl && supabaseServiceKey);
