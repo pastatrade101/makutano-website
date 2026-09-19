@@ -79,16 +79,18 @@
 </dialog>
 
 <style>
-	.header { position: fixed; inset: 0 0 auto; z-index: 100; background: rgba(var(--bg-rgb), .88); border-bottom: 1px solid transparent; backdrop-filter: blur(18px); transition: border-color var(--dur-fast); }
-	.header.scrolled { border-color: var(--line); }
+	.header { position: fixed; inset: 0 0 auto; z-index: 100; background: rgba(var(--bg-rgb), .88); border-bottom: 1px solid transparent; backdrop-filter: blur(18px); transition: border-color var(--dur-fast), background 280ms var(--ease-out), box-shadow 280ms var(--ease-out); }
+	.header.scrolled { border-color: var(--line); background: rgba(var(--bg-rgb), .94); box-shadow: 0 12px 38px rgba(4, 10, 18, .08); }
 	.bar { height: var(--header-h); display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; }
 	.brand { display: inline-flex; align-items: center; gap: .7rem; flex: none; }
-	.mark { display: grid; place-items: center; width: 40px; height: 40px; border-radius: 12px; background: var(--brand); color: var(--on-brand); font: 700 1.4rem var(--font-display); }
+	.mark { display: grid; place-items: center; width: 40px; height: 40px; border-radius: 12px; background: var(--brand); color: var(--on-brand); font: 700 1.4rem var(--font-display); transition: transform 320ms var(--ease-emphasized), border-radius 320ms var(--ease-out); }
+	.brand:hover .mark { transform: rotate(-7deg) scale(1.06); border-radius: 16px 10px 16px 10px; }
 	.word { display: flex; flex-direction: column; font-family: var(--font-display); line-height: 1.1; }
 	.word strong { font-size: 1.1rem; }
 	.word em { font-style: normal; font-size: .65rem; letter-spacing: .3em; text-transform: uppercase; color: var(--brand-ink); margin-top: .2rem; }
 	.desktop-nav { display: flex; gap: .25rem; }
-	.desktop-nav a { padding: .65rem 1rem; border-radius: var(--radius-pill); font-size: .9rem; color: var(--ink-muted); }
+	.desktop-nav a { position: relative; padding: .65rem 1rem; border-radius: var(--radius-pill); font-size: .9rem; color: var(--ink-muted); transition: color 160ms var(--ease-out), background 220ms var(--ease-out), transform 220ms var(--ease-emphasized); }
+	.desktop-nav a:hover { transform: translateY(-2px); }
 	.desktop-nav a:hover { color: var(--ink); background: var(--bg-raised); }
 	.desktop-nav a.active { background: var(--brand-soft); color: var(--brand-ink); }
 	.actions { display: flex; align-items: center; gap: .75rem; }

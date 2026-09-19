@@ -37,6 +37,20 @@ body {
 	overflow-x: hidden;
 }
 
+body::after {
+	content: '';
+	position: fixed;
+	inset: 0;
+	z-index: 9998;
+	pointer-events: none;
+	background: linear-gradient(110deg, transparent 35%, rgba(var(--brand-rgb), .08) 50%, transparent 65%);
+	transform: translateX(-130%);
+}
+
+.motion-enabled body::after {
+	animation: first-light 900ms var(--ease-emphasized) 120ms both;
+}
+
 img,
 picture,
 svg,
@@ -216,6 +230,16 @@ strong {
 	text-align: center;
 }
 
+.btn > svg,
+.btn > :is(.btn-arrow) {
+	transition: transform 260ms var(--ease-emphasized);
+}
+
+.btn:hover > svg,
+.btn:hover > :is(.btn-arrow) {
+	transform: translate3d(3px, -3px, 0);
+}
+
 /* Wipe fill that sweeps up from the bottom on hover. */
 .btn::after {
 	content: '';
@@ -362,6 +386,76 @@ strong {
 	will-change: transform, opacity;
 }
 
+/* Shared premium motion language: calm entrances, crisp feedback, quiet depth. */
+.motion-enabled [data-motion-reveal] {
+	opacity: 0;
+	transform: translate3d(0, 24px, 0) scale(.985);
+	filter: blur(3px);
+	transition:
+		opacity 620ms var(--ease-emphasized) var(--motion-delay, 0ms),
+		transform 620ms var(--ease-emphasized) var(--motion-delay, 0ms),
+		filter 500ms var(--ease-out) var(--motion-delay, 0ms);
+	will-change: opacity, transform, filter;
+}
+
+.motion-enabled [data-motion-reveal].motion-in {
+	opacity: 1;
+	transform: none;
+	filter: none;
+}
+
+.motion-enabled header .brand,
+.motion-enabled header .desktop-nav,
+.motion-enabled header .actions {
+	animation: header-settle 620ms var(--ease-emphasized) both;
+}
+
+.motion-enabled header .desktop-nav { animation-delay: 70ms; }
+.motion-enabled header .actions { animation-delay: 130ms; }
+
+:is(.card, article, .proof-card, .partner-card, .service-card) img {
+	transition: transform 700ms var(--ease-emphasized), filter 500ms var(--ease-out);
+}
+
+:is(.card, article, .proof-card, .partner-card, .service-card):hover img {
+	transform: scale(1.025);
+}
+
+:is(.card, .proof-card, .partner-card, .service-card) {
+	transition:
+		transform 360ms var(--ease-emphasized),
+		box-shadow 360ms var(--ease-out),
+		border-color 220ms var(--ease-out);
+}
+
+:is(.card, .proof-card, .partner-card, .service-card):hover {
+	box-shadow: 0 24px 55px rgba(4, 10, 18, .14);
+}
+
+.eyebrow::before {
+	transform-origin: left center;
+	animation: line-grow 700ms var(--ease-emphasized) both;
+}
+
+details[open] > summary svg {
+	animation: detail-turn 260ms var(--ease-emphasized);
+}
+
+::view-transition-old(root) {
+	animation: page-out 180ms cubic-bezier(.3, 0, 1, 1) both;
+}
+
+::view-transition-new(root) {
+	animation: page-in 480ms var(--ease-emphasized) both;
+}
+
+@keyframes first-light { 0% { transform: translateX(-130%); } 100% { transform: translateX(130%); } }
+@keyframes header-settle { from { opacity: 0; transform: translate3d(0, -14px, 0); } }
+@keyframes line-grow { from { transform: scaleX(0); } }
+@keyframes detail-turn { from { transform: rotate(-75deg) scale(.75); opacity: .4; } }
+@keyframes page-out { to { opacity: 0; transform: scale(.995); filter: blur(2px); } }
+@keyframes page-in { from { opacity: 0; transform: translate3d(0, 14px, 0); filter: blur(3px); } }
+
 [data-reveal='up'] {
 	transform: translateY(38px);
 }
@@ -414,11 +508,15 @@ strong {
 	}
 
 	[data-reveal],
-	.split-inner {
+	.split-inner,
+	[data-motion-reveal] {
 		opacity: 1 !important;
 		transform: none !important;
 		clip-path: none !important;
+		filter: none !important;
 	}
+
+	body::after { display: none; }
 }
 
 /* Shared layout safeguards keep translated text and narrow viewports usable. */

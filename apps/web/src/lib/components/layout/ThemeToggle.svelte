@@ -17,8 +17,9 @@
 </button>
 
 <style>
-	.theme-toggle { display: grid; place-items: center; width: 44px; height: 44px; flex: none; border: 1px solid var(--line-strong); border-radius: 50%; color: var(--brand-ink); background: var(--bg-raised); }
+	.theme-toggle { display: grid; place-items: center; width: 44px; height: 44px; flex: none; border: 1px solid var(--line-strong); border-radius: 50%; color: var(--brand-ink); background: var(--bg-raised); transition: transform 220ms var(--ease-emphasized), background 220ms var(--ease-out), border-color 220ms var(--ease-out); }
 	.theme-toggle:hover { background: var(--brand-soft); border-color: var(--brand); }
+	.theme-toggle:hover { transform: rotate(10deg) scale(1.05); }
 	.sun, .moon { grid-area: 1 / 1; }
 	.moon { display: none; }
 	:global(html[data-theme='light']) .sun { display: none; }
