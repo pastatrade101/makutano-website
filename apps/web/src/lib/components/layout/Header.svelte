@@ -6,6 +6,7 @@
 	import { nav, ui, type SiteSettings } from '@makutano/shared';
 	import Icon from '../ui/Icon.svelte';
 	import LangToggle from './LangToggle.svelte';
+	import ThemeToggle from './ThemeToggle.svelte';
 
 	let { site }: { site: SiteSettings } = $props();
 	let drawer: HTMLDialogElement;
@@ -55,6 +56,7 @@
 		</nav>
 		<div class="actions">
 			<LangToggle />
+			<ThemeToggle />
 			<a class="btn btn--sm cta" href="/contact">{t(ui.letsTalk)}<Icon name="arrow-up-right" size={16} /></a>
 			<button bind:this={trigger} class="burger" type="button" aria-label={t({en:'Open menu',sw:'Fungua menyu'})} aria-expanded={open} aria-controls="mobile-menu" onclick={show}><Icon name="menu" size={22} /></button>
 		</div>
@@ -84,11 +86,11 @@
 	.mark { display: grid; place-items: center; width: 40px; height: 40px; border-radius: 12px; background: var(--brand); color: var(--on-brand); font: 700 1.4rem var(--font-display); }
 	.word { display: flex; flex-direction: column; font-family: var(--font-display); line-height: 1.1; }
 	.word strong { font-size: 1.1rem; }
-	.word em { font-style: normal; font-size: .65rem; letter-spacing: .3em; text-transform: uppercase; color: var(--brand); margin-top: .2rem; }
+	.word em { font-style: normal; font-size: .65rem; letter-spacing: .3em; text-transform: uppercase; color: var(--brand-ink); margin-top: .2rem; }
 	.desktop-nav { display: flex; gap: .25rem; }
 	.desktop-nav a { padding: .65rem 1rem; border-radius: var(--radius-pill); font-size: .9rem; color: var(--ink-muted); }
 	.desktop-nav a:hover { color: var(--ink); background: var(--bg-raised); }
-	.desktop-nav a.active { background: var(--brand-soft); color: var(--brand); }
+	.desktop-nav a.active { background: var(--brand-soft); color: var(--brand-ink); }
 	.actions { display: flex; align-items: center; gap: .75rem; }
 	.burger, .close { display: grid; place-items: center; width: 44px; height: 44px; flex: none; border: 1px solid var(--line-strong); border-radius: 50%; color: var(--ink); }
 	.burger { display: none; }
@@ -99,12 +101,12 @@
 	.drawer-head .eyebrow { font-size: .7rem; }
 	.drawer-head .eyebrow::before { display: none; }
 	.drawer nav a { display: flex; align-items: center; justify-content: space-between; padding: 1rem 0; border-bottom: 1px solid var(--line); font: 500 1.5rem var(--font-display); }
-	.drawer nav a.active { color: var(--brand); }
+	.drawer nav a.active { color: var(--brand-ink); }
 	.drawer-foot { display: flex; flex-direction: column; align-items: flex-start; gap: .8rem; margin-top: auto; padding-bottom: env(safe-area-inset-bottom); overflow-wrap: anywhere; }
 	.drawer-foot .btn { margin-bottom: .75rem; }
 	.drawer-foot > a:not(.btn), .drawer-foot p { font-size: .9rem; }
 	@keyframes drawer-in { from { opacity: 0; transform: translateX(24px); } }
 	@media (max-width: 1100px) { .desktop-nav { display: none; } .burger { display: grid; } }
 	@media (max-width: 560px) { .cta { display: none; } .bar { gap: .5rem; } .actions { gap: .5rem; } }
-	@media (max-width: 360px) { .word strong { font-size: .95rem; } .brand { gap: .45rem; } .mark { width: 34px; height: 36px; } }
+	@media (max-width: 360px) { .word { display: none; } .brand { gap: .45rem; } .mark { width: 34px; height: 36px; } }
 </style>

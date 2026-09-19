@@ -354,8 +354,8 @@ export const partners: Partner[] = [
 		name: 'Ilboru Saccos',
 		sector: { en: 'Financial services', sw: 'Huduma za fedha' },
 		description: {
-			en: 'A savings and credit cooperative society (SACCOS) we work with on digital tools for member services and financial operations.',
-			sw: 'Chama cha akiba na mikopo (SACCOS) tunachoshirikiana nacho katika zana za kidijitali kwa huduma za wanachama na shughuli za fedha.'
+			en: 'Our client and partner in financial services. We built the Ilboru Saccos platform using our own SACCOS system to support its digital operations.',
+			sw: 'Mteja na mshirika wetu katika huduma za fedha. Tumejenga jukwaa la Ilboru Saccos kwa kutumia mfumo wetu wa SACCOS kusaidia shughuli zake za kidijitali.'
 		},
 		url: 'https://ias.co.tz',
 		logo: '/images/partners/ilboru.svg',
@@ -377,14 +377,14 @@ export const partners: Partner[] = [
 	{
 		id: 'ptr-smartclass',
 		slug: 'smartclass',
-		name: 'Smartclass',
+		name: 'SmartClass',
 		sector: { en: 'Education', sw: 'Elimu' },
 		description: {
-			en: 'An education technology partner focused on digital learning tools and platforms.',
-			sw: 'Mshirika wa teknolojia ya elimu anayelenga zana na mifumo ya kujifunza kidijitali.'
+			en: 'Our AI-powered learning product for primary and secondary students, bringing together tutoring, adaptive practice, practical simulations, and parent insights.',
+			sw: 'Bidhaa yetu ya kujifunza kwa AI kwa wanafunzi wa msingi na sekondari, yenye mafunzo, mazoezi, majaribio shirikishi, na taarifa kwa wazazi.'
 		},
-		tag: { en: 'Digital Learning', sw: 'Kujifunza Kidijitali' },
-		url: null,
+		tag: { en: 'Our product', sw: 'Bidhaa yetu' },
+		url: 'https://smartclass.co.tz/home',
 		logo: '/images/partners/smartclass.svg',
 		order: 3
 	}

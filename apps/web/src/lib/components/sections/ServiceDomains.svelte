@@ -130,7 +130,7 @@
 		font-size: 0.8125rem;
 		font-weight: 600;
 		letter-spacing: 0.14em;
-		color: var(--brand);
+		color: var(--brand-ink);
 	}
 
 	.ico {
@@ -140,7 +140,7 @@
 		height: 48px;
 		border-radius: 14px;
 		background: var(--brand-soft);
-		color: var(--brand);
+		color: var(--brand-ink);
 		transition:
 			background var(--dur) var(--ease-out),
 			color var(--dur) var(--ease-out),
@@ -198,7 +198,7 @@
 		gap: 0.45rem;
 		font-family: var(--font-display);
 		font-size: 0.875rem;
-		color: var(--brand);
+		color: var(--brand-ink);
 	}
 
 	.more :global(svg) {
@@ -233,7 +233,7 @@
 
 	.items.list li:hover article {
 		transform: none;
-		background: rgba(255, 255, 255, 0.02);
+		background: var(--surface-hover);
 	}
 
 	.items.list .num {
@@ -247,7 +247,7 @@
 	}
 
 	.items.list li:hover .num {
-		color: var(--brand);
+		color: var(--brand-ink);
 	}
 
 	.items.list h3 {

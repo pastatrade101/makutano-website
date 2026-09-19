@@ -15,7 +15,6 @@
 html {
 	-webkit-text-size-adjust: 100%;
 	scroll-padding-top: calc(var(--header-h) + 1.5rem);
-	color-scheme: dark;
 }
 
 html.lenis,
@@ -72,7 +71,7 @@ ol {
 }
 
 :focus-visible {
-	outline: 2px solid var(--brand);
+	outline: 2px solid var(--brand-ink);
 	outline-offset: 3px;
 	border-radius: 4px;
 }
@@ -170,7 +169,7 @@ strong {
 	font-weight: 500;
 	letter-spacing: 0.18em;
 	text-transform: uppercase;
-	color: var(--brand);
+	color: var(--brand-ink);
 	line-height: 1.4;
 }
 
@@ -325,7 +324,7 @@ strong {
 
 .link-underline:hover {
 	background-size: 100% 1px;
-	color: var(--brand);
+	color: var(--brand-ink);
 }
 
 .skip-link {

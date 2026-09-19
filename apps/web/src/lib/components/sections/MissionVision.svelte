@@ -86,7 +86,7 @@
 		height: 52px;
 		border-radius: 15px;
 		background: var(--brand-soft);
-		color: var(--brand);
+		color: var(--brand-ink);
 		transition:
 			background var(--dur) var(--ease-out),
 			color var(--dur) var(--ease-out);

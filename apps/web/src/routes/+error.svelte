@@ -112,7 +112,7 @@
 
 	.links a:hover {
 		border-color: var(--brand);
-		color: var(--brand);
+		color: var(--brand-ink);
 	}
 
 	.actions {

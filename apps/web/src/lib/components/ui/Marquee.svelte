@@ -67,7 +67,7 @@
 	}
 
 	.sep {
-		color: var(--brand);
+		color: var(--brand-ink);
 		font-size: clamp(0.9rem, 1.6vw, 1.35rem);
 	}
 

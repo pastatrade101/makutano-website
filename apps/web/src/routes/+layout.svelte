@@ -3,12 +3,14 @@
 	import { page } from '$app/state';
 	import { onMount } from 'svelte';
 	import { lang, t } from '$lib/i18n.svelte';
+	import { theme } from '$lib/theme.svelte';
 	import Header from '$components/layout/Header.svelte';
 	import Footer from '$components/layout/Footer.svelte';
 	import PageProgress from '$components/layout/PageProgress.svelte';
 	import ScrollTop from '$components/layout/ScrollTop.svelte';
 	let { data, children } = $props();
 	onMount(() => lang.init());
+	onMount(() => theme.init());
 	const canonical = $derived(`${page.url.origin}${page.url.pathname}`);
 </script>
 

@@ -260,10 +260,10 @@
 	.form-intro small { display: block; margin-top: .85rem; color: var(--ink-subtle); font-size: .8rem; }
 	.field { min-width: 0; }
 	.field label { font-size: .85rem; font-weight: 500; color: var(--ink); }
-	.field label > span:not(.optional) { color: var(--brand); }
+	.field label > span:not(.optional) { color: var(--brand-ink); }
 	.optional { color: var(--ink-subtle); font-size: .75rem; font-weight: 400; }
 	.privacy { display: flex; align-items: flex-start; gap: .5rem; font-size: .8rem; }
-	.privacy :global(svg) { flex: none; margin-top: .25rem; color: var(--brand); }
+	.privacy :global(svg) { flex: none; margin-top: .25rem; color: var(--brand-ink); }
 	.form-error { flex-wrap: wrap; }
 	.form-error a { text-decoration: underline; overflow-wrap: anywhere; }
 	.success h2 { font-size: 1.7rem; }
@@ -307,7 +307,7 @@
 	.invalid input,
 	.invalid textarea,
 	.invalid select {
-		border-color: #ff7a5c;
+		border-color: var(--error);
 	}
 
 	.select-wrap {
@@ -331,7 +331,7 @@
 
 	.err {
 		font-size: 0.8125rem;
-		color: #ff9a80;
+		color: var(--error);
 	}
 
 	.form-error {
@@ -340,10 +340,10 @@
 		gap: 0.6rem;
 		margin: 0;
 		padding: 0.85rem 1.1rem;
-		border: 1px solid rgba(255, 122, 92, 0.4);
+		border: 1px solid rgba(var(--error-rgb), 0.4);
 		border-radius: var(--radius);
-		background: rgba(255, 122, 92, 0.1);
-		color: #ff9a80;
+		background: rgba(var(--error-rgb), 0.1);
+		color: var(--error);
 		font-size: 0.875rem;
 	}
 

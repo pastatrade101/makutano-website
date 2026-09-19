@@ -108,7 +108,7 @@
 		height: 52px;
 		border-radius: 15px;
 		background: var(--brand-soft);
-		color: var(--brand);
+		color: var(--brand-ink);
 		transition:
 			background var(--dur) var(--ease-out),
 			color var(--dur) var(--ease-out),
@@ -138,7 +138,7 @@
 		margin-top: 0.5rem;
 		font-family: var(--font-display);
 		font-size: 0.875rem;
-		color: var(--brand);
+		color: var(--brand-ink);
 	}
 
 	.more :global(svg) {

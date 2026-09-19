@@ -140,7 +140,7 @@
 		height: 44px;
 		border-radius: 13px;
 		background: var(--brand-soft);
-		color: var(--brand);
+		color: var(--brand-ink);
 		transition:
 			background var(--dur) var(--ease-out),
 			color var(--dur) var(--ease-out),
@@ -175,7 +175,7 @@
 		background: var(--bg-raised);
 	}
 
-	.map-link { display: flex; align-items: center; justify-content: space-between; padding: 1rem 1.25rem; font-size: .85rem; color: var(--brand); border-top: 1px solid var(--line); }
+	.map-link { display: flex; align-items: center; justify-content: space-between; padding: 1rem 1.25rem; font-size: .85rem; color: var(--brand-ink); border-top: 1px solid var(--line); }
 
 	.map iframe {
 		display: block;

@@ -101,7 +101,7 @@
 	}
 
 	button:hover {
-		color: var(--brand);
+		color: var(--brand-ink);
 	}
 
 	.indicator {

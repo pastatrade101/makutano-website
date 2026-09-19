@@ -17,9 +17,9 @@ export const seo = {
 			'Makutano Digital Company Limited: a Tanzanian digital solutions partnership operating at the intersection of technology, real estate and information services.'
 	},
 	partners: {
-		title: 'Partners — Makutano Digital',
+		title: 'Products & Partners — Makutano Digital',
 		description:
-			'The organisations Makutano Digital works alongside across finance, technology and education: Ilboru Saccos, Moinfotech and Smartclass.'
+			'Explore SmartClass and our SACCOS platform, built by Makutano Digital, and meet our partners Ilboru Saccos and Moinfotech.'
 	},
 	contact: {
 		title: 'Contact — Makutano Digital',

@@ -219,7 +219,7 @@
 		font-size: 0.6875rem;
 		letter-spacing: 0.26em;
 		text-transform: uppercase;
-		color: var(--brand);
+		color: var(--brand-ink);
 	}
 
 	.about p {
@@ -278,7 +278,7 @@
 	}
 
 	.contact-list :global(svg) {
-		color: var(--brand);
+		color: var(--brand-ink);
 		margin-top: 0.25rem;
 		flex: none;
 	}

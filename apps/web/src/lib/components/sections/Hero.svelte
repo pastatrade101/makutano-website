@@ -41,25 +41,25 @@
 	.hero-grid { display: grid; grid-template-columns: minmax(0, 1.3fr) minmax(0, .85fr); align-items: center; gap: clamp(2.5rem, 6vw, 6rem); padding-bottom: clamp(2.5rem, 5vw, 4rem); }
 	.copy { display: flex; flex-direction: column; align-items: flex-start; gap: 1.6rem; animation: enter 600ms var(--ease-out) both; }
 	h1 { font-size: clamp(2.8rem, 6.3vw, 5.75rem); max-width: 13ch; line-height: 1.06; letter-spacing: -.045em; }
-	h1 span { display: block; color: var(--brand); }
+	h1 span { display: block; color: var(--brand-ink); }
 	.lead { max-width: 44ch; font-size: clamp(1rem, 1.4vw, 1.15rem); line-height: 1.75; }
 	.actions { display: flex; flex-wrap: wrap; gap: .75rem; margin-top: .25rem; }
 	.location { display: flex; align-items: center; gap: .6rem; color: var(--ink-muted); font-size: .8rem; }
 	.dot { width: 6px; height: 6px; border-radius: 50%; background: var(--brand); flex: none; }
 	.portrait { position: relative; border-radius: 28px; overflow: hidden; border: 1px solid var(--line-strong); animation: enter 700ms var(--ease-out) 100ms both; background: var(--bg-raised); }
 	.portrait img { width: 100%; height: auto; aspect-ratio: 4 / 4.6; object-fit: cover; }
-	figcaption { position: absolute; inset: auto 1rem 1rem; padding: 1rem; display: flex; align-items: center; gap: .75rem; border: 1px solid rgba(255,255,255,.2); border-radius: 16px; background: rgba(11,21,34,.9); backdrop-filter: blur(16px); }
+	figcaption { position: absolute; inset: auto 1rem 1rem; padding: 1rem; display: flex; align-items: center; gap: .75rem; border: 1px solid var(--line-strong); border-radius: 16px; background: rgba(var(--bg-rgb),.94); backdrop-filter: blur(16px); }
 	figcaption strong, figcaption small { display: block; }
 	figcaption strong { font: 500 1rem var(--font-display); }
 	figcaption small { font-size: .75rem; color: var(--ink-muted); margin-top: .2rem; }
-	figcaption > :global(svg) { margin-left: auto; color: var(--brand); flex: none; }
+	figcaption > :global(svg) { margin-left: auto; color: var(--brand-ink); flex: none; }
 	.badge-icon { display: grid; place-items: center; width: 44px; height: 44px; background: var(--brand); color: var(--on-brand); border-radius: 12px; flex: none; }
 	.facts { display: grid; grid-template-columns: 1fr 1fr 1.2fr; border-top: 1px solid var(--line); padding-block: 1.5rem; gap: 1.5rem; }
 	.facts > * { display: flex; align-items: center; gap: .9rem; }
 	.facts > * + * { border-left: 1px solid var(--line); padding-left: 1.5rem; }
-	.facts strong { font: 500 2rem var(--font-display); color: var(--brand); }
+	.facts strong { font: 500 2rem var(--font-display); color: var(--brand-ink); }
 	.facts span { font-size: .85rem; color: var(--ink-muted); max-width: 25ch; }
-	.facts :global(svg) { color: var(--brand); flex: none; }
+	.facts :global(svg) { color: var(--brand-ink); flex: none; }
 	.facts a { justify-content: space-between; }
 	.facts a:hover span { color: var(--ink); }
 	@keyframes enter { from { opacity: 0; transform: translateY(18px); } }

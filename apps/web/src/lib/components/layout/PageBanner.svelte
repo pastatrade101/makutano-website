@@ -83,7 +83,7 @@
 	}
 
 	.grid-lines span {
-		border-left: 1px solid rgba(255, 255, 255, 0.05);
+		border-left: 1px solid var(--line);
 	}
 
 	.inner {
@@ -111,11 +111,11 @@
 	}
 
 	.crumbs a:hover {
-		color: var(--brand);
+		color: var(--brand-ink);
 	}
 
 	.crumbs span {
-		color: var(--brand);
+		color: var(--brand-ink);
 	}
 
 

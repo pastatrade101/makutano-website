@@ -42,6 +42,6 @@
  .partner-inner ul { display: flex; align-items: center; justify-content: center; gap: clamp(1.5rem, 5vw, 5rem); }
  .partner-inner li a { display: block; padding-block: .5rem; font: 500 clamp(1rem, 1.8vw, 1.35rem) var(--font-display); color: var(--ink-muted); }
  .partner-inner li a:hover { color: var(--ink); }
- .partner-link { display: inline-flex; gap: .5rem; align-items: center; min-height: 44px; font-size: .8rem; color: var(--brand); }
+ .partner-link { display: inline-flex; gap: .5rem; align-items: center; min-height: 44px; font-size: .8rem; color: var(--brand-ink); }
  @media (max-width: 800px) { .partner-inner { flex-wrap: wrap; gap: .5rem 1rem; } .partner-inner ul { width: 100%; order: 3; justify-content: space-between; gap: 1rem; } }
 </style>

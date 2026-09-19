@@ -177,7 +177,7 @@
 		height: 48px;
 		border-radius: 14px;
 		background: var(--brand-soft);
-		color: var(--brand);
+		color: var(--brand-ink);
 		transition:
 			background var(--dur) var(--ease-out),
 			color var(--dur) var(--ease-out),
@@ -223,7 +223,7 @@
 		border: 1px solid rgba(var(--brand-rgb), 0.4);
 		border-radius: var(--radius-pill);
 		background: var(--brand-soft);
-		color: var(--brand);
+		color: var(--brand-ink);
 		font-family: var(--font-display);
 		font-size: 0.875rem;
 		line-height: 1.4;
@@ -252,7 +252,7 @@
 	}
 
 	.reg-table div:hover {
-		background: rgba(255, 255, 255, 0.025);
+		background: var(--surface-hover);
 	}
 
 	.reg-table dt {
@@ -322,7 +322,7 @@
 	.role {
 		font-family: var(--font-display);
 		font-size: 0.875rem;
-		color: var(--brand);
+		color: var(--brand-ink);
 	}
 
 	.who p {

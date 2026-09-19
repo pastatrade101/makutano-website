@@ -10,6 +10,7 @@
  */
 
 :root {
+	color-scheme: dark;
 	/* Primary — navy */
 	--primary: #1e3b5f;
 	--primary-rgb: 30, 59, 95;
@@ -22,6 +23,7 @@
 	--accent-rgb: 255, 189, 88;
 	--accent-strong: #ffa92b;
 	--brand: var(--accent);
+	--brand-ink: var(--accent);
 	--brand-rgb: var(--accent-rgb);
 	--brand-deep: var(--accent-strong);
 	--brand-soft: rgba(255, 189, 88, 0.13);
@@ -44,6 +46,9 @@
 	/* Lines */
 	--line: rgba(255, 255, 255, 0.11);
 	--line-strong: rgba(255, 255, 255, 0.2);
+	--surface-hover: rgba(255, 255, 255, 0.025);
+	--error: #ff9a80;
+	--error-rgb: 255, 122, 92;
 
 	/* Type */
 	--font-display: 'Outfit', 'Helvetica Neue', Arial, sans-serif;
@@ -87,16 +92,24 @@
 	--header-h: 84px;
 }
 
-/* Light sections invert the palette without touching component code. */
+/* Keep the gold brand fills; navy gives accent text contrast on light surfaces. */
+:root[data-theme='light'],
 .theme-light {
+	color-scheme: light;
+	--brand-ink: var(--primary);
 	--bg: #ffffff;
 	--bg-rgb: 255, 255, 255;
 	--bg-raised: #f4f6f9;
 	--bg-raised-2: #e8edf3;
+	--bg-invert: #12263d;
 	--ink: #12263d;
 	--ink-muted: #4a5c70;
-	--ink-subtle: #6f8095;
+	--ink-subtle: #53657b;
+	--ink-invert: #ffffff;
 	--line: rgba(18, 38, 61, 0.12);
 	--line-strong: rgba(18, 38, 61, 0.24);
+	--surface-hover: rgba(18, 38, 61, 0.04);
+	--error: #b32d19;
+	--error-rgb: 179, 45, 25;
 	--shadow: 0 24px 60px rgba(18, 38, 61, 0.1);
 }
